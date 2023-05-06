@@ -10,9 +10,6 @@ const Movie = () => {
     return <div className="loading">Loading....</div>;
   }
 
-  /* plz subsribe to thapa technical channel 
-          https://www.youtube.com/thapatechnical
-         */
 
   return (
     <>
