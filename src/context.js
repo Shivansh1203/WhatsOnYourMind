@@ -1,29 +1,24 @@
-import React, {useContext, useEffect} from "react";
+import React, { useContext, useState } from "react";
+import useFetch from "./useFetch";
+
 const AppContext = React.createContext();
 
-const API_URL = `http://www.omdbapi.com/?apikey=8e61bbbb&s=titanic`
-const AppProvider = ({children}) =>{
 
-    const getMovies = async(url) => {
-        try{
-            const res = await fetch(url);
-            const data = res.json();
-            console.log(data);
-        }catch(error){
-            console.log(error)
-        }
-    }
-    useEffect(()=>{
-        getMovies(API_URL);
-    },[]);
-    return <AppContext.Provider value="shivansh">{children}</AppContext.Provider>
-    
+
+// we are getting the children and that is app component in our case
+const AppProvider = ({ children }) => {
+  const [query, setQuery] = useState("hacker");
+  const { isLoading, isError, movie } = useFetch(`&s=${query}`);
+
+  return (
+    <AppContext.Provider value={{ query, movie, setQuery, isLoading, isError }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
-// global custom hooks
 const useGlobalContext = () => {
-  return useContext (AppContext);
- };
+  return useContext(AppContext);
+};
 
-export{ AppContext, AppProvider, useGlobalContext};
-                                                     
+export { AppContext, AppProvider, useGlobalContext };
