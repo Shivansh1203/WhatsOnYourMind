@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // setting the api link
 export const API_URL = `https: //www.omdbapi.com/?&apikey=${process.env.REACT_APP_MOVIE_KEY}`;
@@ -32,7 +32,7 @@ const useFetch = (apiParams) => {
   useEffect(() => {
     let timeOut = setTimeout(() => {
       getMovie(`${API_URL}&s=${apiParams}`);
-    }, 1000);
+    }, 500);
     console.log("set");
     return () => {
       clearTimeout(timeOut);
