@@ -1,20 +1,18 @@
-import React from 'react'
-// import { AppContext } from './context'
-import { useGlobalContext } from './context';
+import Movie from "./Movie";
+import Search from "./Search";
+
 const Home = () => {
-  // const name = useContext(AppContext);
-  const name = useGlobalContext();
   return (
     <>
-      <div>
-        My HomePage
+      <div className="container">
+        {/* plz subsribe to thapa technical channel 
+          https://www.youtube.com/thapatechnical
+         */}
+        <Search />
+        <Movie />
       </div>
+    </>
+  );
+};
 
-      <p>
-        {name}
-      </p>
-    </>  
-  )
-}
-
-export default Home
+export default Home;
