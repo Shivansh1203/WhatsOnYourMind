@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) =>{
@@ -7,4 +7,10 @@ const AppProvider = ({children}) =>{
     
 };
 
-export {AppContext,AppProvider}
+// global custom hooks
+const useGlobalContext = () => {
+  return useContext (AppContext);
+ };
+
+export{ AppContext, AppProvider, useGlobalContext};
+                                                     
